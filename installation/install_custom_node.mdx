@@ -10,10 +10,10 @@ icon: "puzzle-piece"
 Custom nodes are extensions for ComfyUI that add new functionality like advanced image processing, machine learning fine-tuning, color adjustments, and more. These community-developed nodes can significantly expand ComfyUI's core capabilities.
 
 <Warning>
-Before installing custom nodes, it's important to review them carefully. Since ComfyUI is an open-source project, malicious plugins could potentially exploit custom nodes:
+Before installing custom nodes, it's important to review them carefully. Since ComfyUI is an open-source project, malicious Custom Nodes could potentially exploit your system:
 1. Only install custom nodes from trusted authors and those commonly used by the community
-2. Understand the plugin's functionality before installing and avoid unknown sources to ensure system security
-3. Avoid installing obscure or suspicious plugins - unverified plugins may pose security risks that could lead to system compromise
+2. Understand the Custom Node's functionality before installing and avoid unknown sources to ensure system security
+3. Avoid installing obscure or suspicious Custom Nodes, because unverified Custom Nodes may pose security risks that could lead to system compromise
 </Warning>
 
 All custom node installations require completing these two steps:
@@ -21,7 +21,7 @@ All custom node installations require completing these two steps:
 1. Clone the node code to the `ComfyUI/custom_nodes` directory
 2. Install the required Python dependencies
 
-This guide compares three installation approaches. **ComfyUI Manager** is built into current ComfyUI releases for most setups—start from the [ComfyUI Manager overview](/manager/overview) for what it does and how to enable it. Use **Git clone** or **ZIP** when a node is not on the registry or you need a specific revision.
+This guide compares three installation approaches. **ComfyUI Manager** must be available in your environment before you use it. See the [ComfyUI Manager overview](/manager/overview) for what it does and the [installation guide](/manager/install) for setup. Use **Git clone** or **ZIP** when a node is not on the registry or you need a specific revision.
 
 | Method                        | Advantages                                                    | Disadvantages                                                |
 | ---------------------------- | ------------------------------------------------------------- | ----------------------------------------------------------- |
@@ -29,7 +29,7 @@ This guide compares three installation approaches. **ComfyUI Manager** is built 
 | **Git Clone**                | Can install nodes not registered in the registry               | 1. Requires Git knowledge<br/>2. Manual dependency handling<br/>3. Installation risks |
 | **Repository ZIP Download**   | 1. No Git required<br/>2. Manual control                      | 1. Manual dependency handling<br/>2. No version control<br/>3. Installation risks |
 
-Tip: Before installing custom nodes, check the plugin's README file to understand installation methods, usage, and requirements like specific models, dependency versions, and common issue solutions.
+Tip: Before installing custom nodes, check the Custom Node's README file to understand installation methods, usage, and requirements like specific models, dependency versions, and common issue solutions.
 
 ## Method 1: ComfyUI Manager (Recommended)
 
@@ -54,7 +54,7 @@ Suitable for new nodes not found in Manager or when specific versions are needed
 
 <Steps>
   <Step title="Get the repository URL">
-    Click the "Code" button on GitHub and copy the HTTPS link
+    Click the **Code** button on GitHub and copy the HTTPS link.
   </Step>
   <Step title="Navigate to custom_nodes directory">
  ```bash
@@ -67,10 +67,10 @@ Suitable for new nodes not found in Manager or when specific versions are needed
  ```
   </Step>
   <Step title="Install dependencies">
-  Dependencies must be installed in your ComfyUI environment - be careful not to mix with your system environment to avoid contamination
+  Install dependencies in your ComfyUI environment, not your system environment.
    <Tabs>
     <Tab title="Windows Portable">
-    For Windows portable version, install dependencies in the embedded Python environment
+    For Windows portable version, install dependencies in the embedded Python environment. Run the command from the portable root folder, the folder that contains `python_embeded` and `ComfyUI`.
       ```bash
       python_embeded\python.exe -m pip install -r ComfyUI\custom_nodes\[node directory]\requirements.txt
       ```
@@ -85,7 +85,7 @@ Suitable for new nodes not found in Manager or when specific versions are needed
   </Tabs>
   </Step>
   <Step title="Restart ComfyUI and refresh browser">
-    Restart ComfyUI and refresh your browser. Check startup logs for any `import failed` errors
+    Restart ComfyUI and refresh your browser. In the terminal that runs ComfyUI, check the startup log. A Custom Node that fails to load shows `(IMPORT FAILED)` in the "Import times for custom nodes" list, or a `Cannot import <path> module for custom nodes` message.
   </Step>
 </Steps>
 
@@ -97,8 +97,8 @@ We don't recommend this installation method as it loses version control capabili
 </Warning>
 
 <Steps>
-  <Step title="Click `Code` → `Download ZIP` on GitHub">
-    Click `Code` → `Download ZIP` on the GitHub page
+  <Step title="Download the ZIP file">
+    On the GitHub page, click **Code**, and then select **Download ZIP**.
     ![Click Code → Download ZIP on GitHub](/images/installation/custom_nodes/install-custom-nodes-by-zip.jpg)
   </Step>
   <Step title="Extract the ZIP file">
@@ -107,11 +107,28 @@ We don't recommend this installation method as it loses version control capabili
   <Step title="Copy extracted folder to `ComfyUI/custom_nodes/` directory">
     Copy the extracted folder to `ComfyUI/custom_nodes/` directory
   </Step>
-  <Step title="Install dependencies manually (same as Git method step 4)">
-    Restart ComfyUI and refresh browser
+  <Step title="Install dependencies manually">
+    Install the dependencies in your ComfyUI environment, not your system environment.
+    <Tabs>
+      <Tab title="Windows Portable">
+      Run the command from the portable root folder, the folder that contains `python_embeded` and `ComfyUI`.
+        ```bash
+        python_embeded\python.exe -m pip install -r ComfyUI\custom_nodes\[node directory]\requirements.txt
+        ```
+      </Tab>
+      <Tab title="Manual Install">
+        ```bash
+        cd [node directory]
+        pip install -r requirements.txt
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step title="Restart ComfyUI and refresh browser">
+    Restart ComfyUI so it loads the new Custom Node at startup, and then refresh your browser.
   </Step>
   <Step title="Verify successful installation">
-    Check ComfyUI Manager after restart to confirm the plugin installed successfully and there are no `import failed` errors
+    In the terminal that runs ComfyUI, check the startup log. A Custom Node that fails to load shows `(IMPORT FAILED)` in the "Import times for custom nodes" list, or a `Cannot import <path> module for custom nodes` message.
   </Step>
 </Steps>
 

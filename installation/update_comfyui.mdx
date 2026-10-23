@@ -19,7 +19,7 @@ While we've covered ComfyUI updates across different installation methods in var
  ### Update Script Location
  In the `update` folder within your portable installation directory, you'll find the following update scripts:
 
- ```
+ ```text
  ComfyUI_windows_portable
  └─ 📂update
     ├── update.py
@@ -27,19 +27,25 @@ While we've covered ComfyUI updates across different installation methods in var
     ├── update_comfyui_stable.bat                    // Update to latest stable version
     └── update_comfyui_and_python_dependencies.bat   // ⚠️ DANGER: Reinstalls dependencies - may cause conflicts
 ```
-<Warning>Ensure a stable internet connection during updates.</Warning>
+To update, follow these steps:
+
+1. Double-click the script that matches the version you want.
+2. When the window prompts you to press a key, press a key to close it.
+3. Restart ComfyUI.
+
+Keep a stable internet connection during updates.
 
 <Warning>
 **⚠️ DANGER: Use `update_comfyui_and_python_dependencies.bat` with extreme caution!**
 
 This script is more thorough than regular updates and will:
 - ✅ Update ComfyUI code itself
-- ✅ Update PyTorch (for NVIDIA GPU CUDA 12.9)
+- ✅ Update PyTorch (the CUDA build depends on your Portable package variant)
 - ✅ Reinstall ALL Python dependencies
 
 **Risks:**
 - May cause dependency conflicts with your existing setup
-- Can break custom nodes that rely on specific package versions
+- Can break Custom Nodes that rely on specific package versions
 - May overwrite manually configured packages
 
 **⚠️ Only use this script when:**
@@ -50,13 +56,13 @@ This script is more thorough than regular updates and will:
 **Before running this script:**
 1. **Back up your entire ComfyUI installation**
 2. Document any custom package versions you've installed
-3. Be prepared to reinstall custom nodes if needed
+3. Be prepared to reinstall Custom Nodes if needed
 </Warning>
 </Tab>
 <Tab title="Desktop">
-Comfy Desktop uses Comfy Engine as a package manager to manage ComfyUI. To update the ComfyUI engine, open the [Manage panel](/installation/desktop/usage/manage#update-tab) and use the Update tab. You can choose between **Stable** (default) and **Latest on GitHub** update channels.
+Comfy Desktop uses Comfy Engine as a package manager to manage ComfyUI. To update the ComfyUI engine, open the [Manage panel](/installation/desktop/usage/manage#update-tab) and use the **Update** tab. You can choose between **Stable** (default) and **Latest on GitHub** update channels.
 
-The Desktop app itself updates automatically and is separate from ComfyUI engine updates.
+Comfy Desktop itself updates automatically and is separate from ComfyUI engine updates.
 </Tab>
 <Tab title="Manual Installation">
 Manually installed ComfyUI requires Git commands to complete updates.
@@ -163,24 +169,26 @@ Many users often find themselves on release versions or desktop versions during 
 
 <Tabs>
   <Tab title="Dependencies Not Properly Updated">
-    Users often only use the `git pull` command to update ComfyUI code but **neglect core dependency updates**, leading to the following issues:
+    Running only `git pull` updates ComfyUI code but **skips core dependency updates**, which causes these issues:
 
   - Missing or abnormal frontend functionality
-  - Cannot find newly added workflow templates
-  - Outdated or missing node help documentation
+  - Cannot find newly added Workflow templates
+  - Outdated or missing Node help documentation
   - New features lack corresponding frontend support
 
-  After using the `git pull` command, use the corresponding ComfyUI environment to use `pip install -r requirements.txt` to update dependencies.
+  After `git pull`, activate your ComfyUI environment and run `pip install -r requirements.txt` to update dependencies.
   </Tab>
   <Tab title="Dependency Update Failures">
-    If dependency updates fail, it's commonly due to network or computer permission issues. When core dependency failures occur during updates, the system falls back to older versions. You'll typically see logs like this during startup:
-    ```
+    If dependency updates fail, it's commonly due to network or computer permission issues. ComfyUI doesn't detect a failed dependency update. If you start ComfyUI with `--front-end-version` and that frontend fails to initialize, it falls back to the frontend in the installed `comfyui-frontend-package`. You'll see logs like this during startup:
+    ```text
     Falling back to the default frontend.
-    ComfyUI frontend version: xxx
+    <package> version: X
     ```
 
+    If an installed core package is older than the version in `requirements.txt`, startup logs a warning instead, such as `Installed <name> version X is lower than the recommended version Y.`
+
     Follow these troubleshooting steps:
-    1. Use `pip list` in the appropriate environment to view currently installed dependency packages. If you find version inconsistencies, use `pip install -r requirements.txt` in the ComfyUI environment to attempt dependency updates again.
+    1. Use `pip list` in the appropriate environment to view installed dependency packages. If you find version inconsistencies, use `pip install -r requirements.txt` in the ComfyUI environment to attempt dependency updates again.
     2. If issues persist after updating, check your network connection. Users in mainland China may need to configure a proxy to reliably access GitHub repositories.
     3. If problems continue, check computer permissions. If administrator privileges are required, run the command line with administrator rights.
   </Tab>
@@ -241,7 +249,7 @@ Differences between versions:
   <Tab title="Stable Version (Release)">
     - **Characteristics**: Tested and verified stable code
     - **Advantages**: High stability, suitable for production environments
-    - **Disadvantages**: Feature updates have delays, may lag behind development versions by weeks or months
+    - **Disadvantages**: Feature updates have delays, may lag behind development versions (the ComfyUI README states a weekly release cycle and a new stable version roughly every 2 weeks)
     - **Suitable for**: Users requiring stability, production environment users
   </Tab>
 </Tabs>
@@ -249,7 +257,7 @@ Differences between versions:
 <Tabs>
   <Tab title="Portable">
     Use `update_comfyui.bat` instead of `update_comfyui_stable.bat`:
-    ```
+    ```text
     # Development version (latest features)
     double-click: update_comfyui.bat
     
@@ -269,9 +277,9 @@ Differences between versions:
     ```
   </Tab>
   <Tab title="Desktop">
-    Desktop version is typically built on stable releases and doesn't currently support version switching. If you need the latest features, we recommend:
-    1. Wait for desktop version updates
-    2. Or use portable/manual installation to experience the latest features
+    Comfy Desktop is typically built on stable releases and doesn't support version switching. If you need the latest features:
+    1. Wait for Comfy Desktop updates.
+    2. Or use a Portable or manual installation.
   </Tab>
 </Tabs>
 

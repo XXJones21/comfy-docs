@@ -1,6 +1,6 @@
 ---
 title: "ComfyUI Portable for Windows"
-description: "Download and run ComfyUI Portable on Windows: a standalone package with embedded Python and CUDA builds for NVIDIA GPUs. Extract the archive, then run ComfyUI."
+description: "Download ComfyUI Portable for Windows, a standalone package with embedded Python for Nvidia, AMD, and Intel GPUs. Extract the archive and run ComfyUI."
 icon: "box"
 sidebarTitle: "Portable (Local)"
 ---
@@ -50,20 +50,22 @@ This guide section will walk you through installing ComfyUI Portable.
   <Tab title="AMD GPU">
     ### Portable for AMD GPUs
 
-    <Card title="AMD GPU" icon="download" href="https://github.com/Comfy-Org/ComfyUI/releases/latest/download/ComfyUI_windows_portable_amd.7z">
-      Download for AMD GPUs (ROCm)
-    </Card>
+    <CardGroup cols={1}>
+      <Card title="AMD GPU" icon="download" href="https://github.com/Comfy-Org/ComfyUI/releases/latest/download/ComfyUI_windows_portable_amd.7z">
+        Download for AMD GPUs (ROCm)
+      </Card>
+    </CardGroup>
 
     Download the file and extract it with [7-ZIP](https://7-zip.org/). The extracted folder structure:
 
-    ```
-    ComfyUI_windows_portable_amd
-    ├── 📂ComfyUI                   // ComfyUI main program
-    ├── 📂python_embeded            // Independent Python environment
-    ├── 📂update                    // Batch scripts for upgrading portable version
-    ├── README_VERY_IMPORTANT.txt   // ComfyUI Portable usage instructions in English
-    ├── run_cpu.bat                 // Double click to start ComfyUI (CPU only)
-    └── run_amd_gpu.bat             // Double click to start ComfyUI (AMD GPU)
+    ```text
+    ComfyUI_windows_portable
+    ├── 📂ComfyUI                                // ComfyUI main program
+    ├── 📂python_embeded                         // Independent Python environment
+    ├── 📂update                                 // Batch scripts for upgrading portable version
+    ├── README_VERY_IMPORTANT.txt                // ComfyUI Portable usage instructions in English
+    ├── run_amd_gpu.bat                          // Double click to start ComfyUI (AMD GPU)
+    └── run_amd_gpu_enable_dynamic_vram.bat      // Double click to start ComfyUI (AMD GPU, dynamic VRAM enabled)
     ```
 
     Double click `run_amd_gpu.bat` to launch ComfyUI.
@@ -72,19 +74,19 @@ This guide section will walk you through installing ComfyUI Portable.
   <Tab title="Intel GPU">
     ### Portable for Intel GPUs
 
-    <Card title="Intel GPU" icon="download" href="https://github.com/Comfy-Org/ComfyUI/releases/latest/download/ComfyUI_windows_portable_intel.7z">
-      Download for Intel GPUs
-    </Card>
+    <CardGroup cols={1}>
+      <Card title="Intel GPU" icon="download" href="https://github.com/Comfy-Org/ComfyUI/releases/latest/download/ComfyUI_windows_portable_intel.7z">
+        Download for Intel GPUs
+      </Card>
+    </CardGroup>
 
     Download the file and extract it with [7-ZIP](https://7-zip.org/). The extracted folder structure:
 
-    ```
-    ComfyUI_windows_portable_intel
+    ```text
+    ComfyUI_windows_portable
     ├── 📂ComfyUI                   // ComfyUI main program
     ├── 📂python_embeded            // Independent Python environment
     ├── 📂update                    // Batch scripts for upgrading portable version
-    ├── README_VERY_IMPORTANT.txt   // ComfyUI Portable usage instructions in English
-    ├── run_cpu.bat                 // Double click to start ComfyUI (CPU only)
     └── run_intel_gpu.bat           // Double click to start ComfyUI (Intel GPU)
     ```
 
@@ -143,9 +145,9 @@ To see the GUI go to: http://[::]:8188
 
 You can press `WIN + R` and type `cmd` to open the command prompt, then enter `ipconfig` to view your local IP address. Other devices can then access ComfyUI by entering `http://your-local-IP:8188` in their browser.
 
-### 3. Installing Additional Python Packages
+### Install additional Python packages
 
-The portable version ships with an embedded Python environment (`python_embeded`). To install additional Python packages (such as attention optimizations, custom node dependencies, or other tools), use the embedded Python's pip from the command line:
+The portable version ships with an embedded Python environment (`python_embeded`). To install additional Python packages (such as attention optimizations, Custom Node dependencies, or other tools), use the embedded Python's pip from the command line:
 
 ```bash
 # Navigate to your ComfyUI portable folder first
@@ -161,5 +163,7 @@ After installing a package that requires a startup flag, add the corresponding f
 .\python_embeded\python.exe -s ComfyUI\main.py --<startup-flag> --windows-standalone-build
 ```
 
-For detailed guidance on installing custom node dependencies, see the [custom nodes dependency guide](/basic-concepts/custom-nodes).
+Replace `<startup-flag>` with the flag the package requires. For example, `--listen` (see [Setting up LAN access](#2-setting-up-lan-access-for-comfyui-portable)) turns the line into the `--listen` command shown earlier.
+
+For detailed guidance on installing Custom Node dependencies, see the [Custom Nodes dependency guide](/basic-concepts/custom-nodes).
 
