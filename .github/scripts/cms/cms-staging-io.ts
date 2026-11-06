@@ -129,7 +129,9 @@ export async function copyProjectStaging(
   baseConfig: CmsConfig,
   fromProject: string,
   toProject: string,
-  versions: string[]
+  versions: string[],
+  /** Limit the merge to these locale codes (default: every locale). */
+  localeCodes?: string[]
 ): Promise<number> {
   const versionList = [
     ...new Set(versions.map((v) => normalizeVersion(v)).filter(Boolean)),
@@ -158,6 +160,7 @@ export async function copyProjectStaging(
 
   for (const locale of fromConfig.locales) {
     if (!locale.changelog) continue;
+    if (localeCodes && !localeCodes.includes(locale.code)) continue;
     const toLocale = toConfig.locales.find((l) => l.code === locale.code);
     if (!toLocale?.changelog) continue;
 

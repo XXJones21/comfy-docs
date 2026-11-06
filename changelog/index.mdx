@@ -1,10 +1,10 @@
 ---
 title: "Changelog"
-description: "ComfyUI changelog: the latest features, improvements, and bug fixes in each release, updated as new versions ship."
+description: "Changelog for ComfyUI, Comfy Cloud and Comfy Desktop: new features, model and node support, platform updates and fixes in each release."
 icon: "clock-rotate-left"
 ---
 
-<Update label="v0.44.0" description="November 4, 2026">
+<Update label="ComfyUI v0.44.0" description="November 4, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**MiniMax H3 Max editing nodes**](https://github.com/Comfy-Org/ComfyUI/pull/17424): Recast, Extend, Reframe, Insert, Lip Sync and Camera Control nodes for rewriting the cast of a clip, lengthening it, fitting it to a new aspect ratio, inserting a shot, syncing lips to new audio and steering the camera
@@ -33,7 +33,35 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.43.1" description="October 28, 2026">
+<Update label="Comfy Cloud v0.536.2" description="November 4, 2026" tags={["Comfy Cloud"]}>
+
+**Billing**
+* **Auto top-up status for members**: Workspace members can see the auto top-up status, threshold, target and reset date, and owners still manage the settings
+
+</Update>
+
+<Update label="Comfy Cloud v0.527.0" description="November 1, 2026" tags={["Comfy Cloud"]}>
+
+**New Features**
+* **Upload models from your computer**: Upload a LoRA or other `.safetensors` model of up to 2 GB from disk into the workspace library
+* [**Plate Relight custom nodes**](https://github.com/dughogan/comfyui-plate-relight): Relight a video plate, deflicker AI-generated passes, and add light from passes with the `comfyui-plate-relight` node pack
+
+**Billing**
+* **Auto top-up target balance**: Auto top-up refills your balance up to a target you set, instead of adding a fixed amount
+* **Auto top-up charge preview**: When saving your auto top-up settings would start a charge right away, the dialog shows the amount first
+* **Top-up maximum**: A single top-up is capped at $10,000, whether you pay at checkout, with a saved card, or with pay now
+
+**Workspaces**
+* **SSO seat limit**: New members who join through SSO sign-in or directory sync need a free seat in the workspace, and existing members keep their access
+* **SSO accounts and personal workspaces**: An account held by a required SSO organization can't use its personal workspace
+
+**Improvements**
+* **Out-of-memory errors**: A workflow that runs out of memory fails with an out-of-memory message and a hint to make it smaller, instead of a generic server error
+* **Recovery from full GPU memory**: ComfyUI restarts itself after several out-of-VRAM failures in a row, so later jobs on that machine run again
+
+</Update>
+
+<Update label="ComfyUI v0.43.1" description="October 28, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**Patina texture nodes**](https://github.com/Comfy-Org/ComfyUI/pull/17384): Generate a seamlessly tiling PBR material from a photo or a text prompt, with basecolor, normal, roughness, metalness and height maps returned from the same latent
@@ -44,7 +72,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.43.0" description="October 27, 2026">
+<Update label="ComfyUI v0.43.0" description="October 27, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**Kling 4.0**](https://github.com/Comfy-Org/ComfyUI/pull/17364): Text to video, image to video, reference to video and edit video nodes, with clips up to 30 seconds and stereo audio generated in the same pass
@@ -86,7 +114,24 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.42.4" description="October 22, 2026">
+<Update label="Comfy Cloud v0.497.0" description="October 24, 2026" tags={["Comfy Cloud"]}>
+
+**New Features**
+* [**MiniMax H3 Loop custom nodes**](https://github.com/pxl-pshr/ComfyUI-MiniMaxH3-Loop): Make seamlessly looping videos with MiniMax H3
+* **LTXV HDR decode**: The `LTXVHDRDecodePostprocess` node runs on Comfy Cloud
+
+**Billing**
+* **Card expiry notice**: Workspace owners with auto top-up get an email when the default card expires within 30 days
+
+**Workspaces**
+* **Enterprise Partner Node concurrency**: Enterprise workspaces can run at least 25 Partner Node jobs at the same time
+
+**Improvements**
+* **Location data removed from uploads**: Comfy Cloud removes GPS location data from every uploaded image and keeps the image and its embedded workflow unchanged
+
+</Update>
+
+<Update label="ComfyUI v0.42.4" description="October 22, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**VEED Fabric 1.0**](https://github.com/Comfy-Org/ComfyUI/pull/17242): Turn a still photo and a speech track into a talking, lip-synced video
@@ -103,7 +148,14 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.42.3" description="October 21, 2026">
+<Update label="Comfy Desktop v1.1.8" description="October 22, 2026" tags={["Comfy Desktop"]}>
+
+**Bug Fixes**
+* [**Newer asset database**](https://github.com/Comfy-Org/Comfy-Desktop/pull/1718): ComfyUI starts without assets instead of failing when its asset database was created by a newer ComfyUI version
+
+</Update>
+
+<Update label="ComfyUI v0.42.3" description="October 21, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**Bria FIBO 2.0**](https://github.com/Comfy-Org/ComfyUI/pull/17229): FIBO 2.0 text-to-image and Edit Turbo image editing nodes
@@ -115,7 +167,16 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.42.2" description="October 20, 2026">
+<Update label="Comfy Cloud v0.485.7" description="October 21, 2026" tags={["Comfy Cloud"]}>
+
+**Billing**
+* **Auto top-up**: Workspace owners can turn on auto top-up in the workspace **Billing** tab to refill credits from the default payment method when the balance drops below a set threshold
+* **Auto top-up monthly limit**: Auto top-up pauses when its charges reach the monthly limit and resumes when the limit resets
+* **Declined payments**: Auto top-up turns off after 3 declined charges in a row, until you update your payment method and turn it back on
+
+</Update>
+
+<Update label="ComfyUI v0.42.2" description="October 20, 2026" tags={["ComfyUI"]}>
 
 **New Open-Source Model Support**
 * [**MOSS-Image Color and Depth Control**](https://github.com/Comfy-Org/ComfyUI/pull/17206): Compose with a flat color map and a depth map, with the depth map generated in a subgraph
@@ -130,14 +191,14 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.42.1" description="October 19, 2026">
+<Update label="ComfyUI v0.42.1" description="October 19, 2026" tags={["ComfyUI"]}>
 
 **Bug Fixes**
 * [**Graph cleanup**](https://github.com/Comfy-Org/ComfyUI/pull/17178): Synchronize model-prefetch graph cleanups so repeated runs release memory reliably
 
 </Update>
 
-<Update label="v0.42.0" description="October 18, 2026">
+<Update label="ComfyUI v0.42.0" description="October 18, 2026" tags={["ComfyUI"]}>
 
 **New Open-Source Model Support**
 * [**MOSS-Image**](https://github.com/Comfy-Org/ComfyUI/pull/17095): Native support for text to image and layout-guided generation, with strong bilingual text rendering
@@ -155,7 +216,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.41.1" description="October 15, 2026">
+<Update label="ComfyUI v0.41.1" description="October 15, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**Krea 3 Image**](https://github.com/Comfy-Org/ComfyUI/pull/17067): Text-to-image and image editing in one node, with up to 8 reference images, 1K or 2K output, and a precise edit mode that leaves the rest of the image unchanged
@@ -167,7 +228,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.41.0" description="October 15, 2026">
+<Update label="ComfyUI v0.41.0" description="October 15, 2026" tags={["ComfyUI"]}>
 
 **New Open-Source Model Support**
 * [**FLUX.3 Image Klein**](https://github.com/Comfy-Org/ComfyUI/pull/17064): Native support for the base and step-distilled checkpoints, with the Qwen3-VL-4B text encoder and the existing Flux2 VAE
@@ -193,7 +254,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.40.0" description="October 13, 2026">
+<Update label="ComfyUI v0.40.0" description="October 13, 2026" tags={["ComfyUI"]}>
 
 **New Open-Source Model Support**
 * [**Qwen-Image 2.1 Turbo**](https://github.com/Comfy-Org/workflow_templates/pull/1328): The 8-step accelerated Qwen-Image 2.1 checkpoint, with new text-to-image and image edit templates
@@ -256,7 +317,17 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.39.2" description="October 8, 2026">
+<Update label="Comfy Desktop v1.1.7" description="October 13, 2026" tags={["Comfy Desktop"]}>
+
+**Bug Fixes**
+* [**Updates keep your files**](https://github.com/Comfy-Org/Comfy-Desktop/pull/1677): Updating ComfyUI no longer deletes files you keep inside the `ComfyUI` folder, such as a custom outputs folder
+* [**Stable updates**](https://github.com/Comfy-Org/Comfy-Desktop/pull/1648): A Stable update installs the release tag directly, and Desktop won't launch an install that an update left half-written
+* [**Browser sign-in**](https://github.com/Comfy-Org/Comfy-Desktop/pull/1681): Desktop waits up to 10 minutes for browser sign-in, and asking to sign in again reopens the pending sign-in page ([#1685](https://github.com/Comfy-Org/Comfy-Desktop/pull/1685))
+* [**Asset database errors**](https://github.com/Comfy-Org/Comfy-Desktop/pull/1688): Desktop shows ComfyUI's asset database error when ComfyUI can't start because of it
+
+</Update>
+
+<Update label="ComfyUI v0.39.2" description="October 8, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**Kling Virtual Try-On**](https://github.com/Comfy-Org/ComfyUI/pull/16844): Dress a person in a clothing item from a garment image, preserving their face and pose
@@ -269,14 +340,14 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.39.1" description="October 7, 2026">
+<Update label="ComfyUI v0.39.1" description="October 7, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**Nano Banana 2.1**](https://github.com/Comfy-Org/ComfyUI/pull/16822): Text-to-image and image editing in one node, with 1K to 4K output, three thinking levels, and up to 14 reference images
 
 </Update>
 
-<Update label="v0.39.0" description="October 5, 2026">
+<Update label="ComfyUI v0.39.0" description="October 5, 2026" tags={["ComfyUI"]}>
 
 **New Node Updates**
 * [**DynamicGroup widget input**](https://github.com/Comfy-Org/ComfyUI/pull/16260): Custom nodes can declare a repeatable group of widget inputs, such as LoRA rows and their strengths
@@ -307,7 +378,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.38.2" description="October 2, 2026">
+<Update label="ComfyUI v0.38.2" description="October 2, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**FLUX 3 Image**](https://github.com/Comfy-Org/ComfyUI/pull/16716): BFL's FLUX 3 image model for text-to-image, image editing, and bounding box control
@@ -315,7 +386,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.38.1" description="September 30, 2026">
+<Update label="ComfyUI v0.38.1" description="September 30, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**Ideogram 4.5**](https://github.com/Comfy-Org/ComfyUI/pull/16689): Text-to-image, edit, and precise edit nodes for the new model
@@ -327,7 +398,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.38.0" description="September 29, 2026">
+<Update label="ComfyUI v0.38.0" description="September 29, 2026" tags={["ComfyUI"]}>
 
 **New Open-Source Model Support**
 * [**Ming Image 0.1 Design**](https://github.com/Comfy-Org/ComfyUI/pull/16482): A 6B text-to-image model for text-heavy design layouts, with transparent RGBA output
@@ -369,7 +440,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.37.2" description="September 23, 2026">
+<Update label="ComfyUI v0.37.2" description="September 23, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**Recraft V4.1 Flash**](https://github.com/Comfy-Org/ComfyUI/pull/16501): A faster, lower-cost option on the Recraft V4 text-to-image node
@@ -381,14 +452,14 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.37.1" description="September 22, 2026">
+<Update label="ComfyUI v0.37.1" description="September 22, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**HY Image 3.5 Preview**](https://github.com/Comfy-Org/ComfyUI/pull/16462): Text-to-image and image edit with up to 5 reference images, native 2K output
 
 </Update>
 
-<Update label="v0.37.0" description="September 21, 2026">
+<Update label="ComfyUI v0.37.0" description="September 21, 2026" tags={["ComfyUI"]}>
 
 **New Open-Source Model Support**
 * [**Qwen-Image-2.1**](https://blog.comfy.org/p/qwen-image-21-in-comfyui-open-weight): Native 2K generation and editing with an alpha channel and multi-image references
@@ -415,7 +486,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.36.0" description="September 15, 2026">
+<Update label="ComfyUI v0.36.0" description="September 15, 2026" tags={["ComfyUI"]}>
 
 **New Open-Source Model Support**
 * [**FastVideo FastH3**](https://cloud.comfy.org/?template=video_fastvideo_fasth3_i2v): FastVideo 8-step distilled MiniMax H3 for text-to-video and image-to-video with native audio
@@ -451,7 +522,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.35.2" description="September 14, 2026">
+<Update label="ComfyUI v0.35.2" description="September 14, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**Bria edit suite**](https://github.com/Comfy-Org/ComfyUI/pull/16264): New image edit nodes and the Video Eraser node
@@ -467,7 +538,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.35.1" description="September 10, 2026">
+<Update label="ComfyUI v0.35.1" description="September 10, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**Tripo v3 API**](https://github.com/Comfy-Org/ComfyUI/pull/16201): Migrated Tripo nodes to the v3 API and added the Smart Segment node
@@ -480,7 +551,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.35.0" description="September 9, 2026">
+<Update label="ComfyUI v0.35.0" description="September 9, 2026" tags={["ComfyUI"]}>
 
 **New Open-Source Model Support**
 * [**Pixal3D Multi-View**](https://github.com/Comfy-Org/ComfyUI/pull/16048): Reconstruct textured meshes from front, back, left, and right views with Pixal3D Multi-View Conditioning
@@ -519,7 +590,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.34.6" description="September 7, 2026">
+<Update label="ComfyUI v0.34.6" description="September 7, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**GPT-6 Astra**](https://github.com/Comfy-Org/ComfyUI/pull/16125): Added GPT-6 Astra and reasoning effort levels on supported OpenAI Chat models
@@ -527,7 +598,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.34.5" description="September 5, 2026">
+<Update label="ComfyUI v0.34.5" description="September 5, 2026" tags={["ComfyUI"]}>
 
 
 **Partner Node Updates**
@@ -535,7 +606,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.34.4" description="September 4, 2026">
+<Update label="ComfyUI v0.34.4" description="September 4, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**Meta Muse Image**](https://github.com/Comfy-Org/ComfyUI/pull/16078): Added Muse Image 1.0 text-to-image and edit nodes with up to 10 reference images
@@ -546,7 +617,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.34.3" description="September 2, 2026">
+<Update label="ComfyUI v0.34.3" description="September 2, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**MiniMax H3 Max**](https://github.com/Comfy-Org/ComfyUI/pull/16025): Added the H3 Max model option to MiniMax H3 text-to-video, first-last-frame, and reference nodes
@@ -559,7 +630,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.34.2" description="August 27, 2026">
+<Update label="ComfyUI v0.34.2" description="August 27, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**Gemini Omni 1.1 Flash**](https://links.comfy.org/3UjQmgE): Faster video generation and conversational editing, with 4K output and video extend
@@ -569,7 +640,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.34.1" description="August 26, 2026">
+<Update label="ComfyUI v0.34.1" description="August 26, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**WAN3-Prime**](https://github.com/Comfy-Org/ComfyUI/pull/15894): Added the Wan 3.0 Prime model option with higher per-second rates
@@ -578,7 +649,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.34.0" description="August 26, 2026">
+<Update label="ComfyUI v0.34.0" description="August 26, 2026" tags={["ComfyUI"]}>
 
 **New Open-Source Model Support**
 * [**Pixal3D & TRELLIS2**](https://github.com/Comfy-Org/ComfyUI/pull/14718): 3D mesh and texture generation with remesh, decimate, UV unwrap, and texture bake post-processing
@@ -601,7 +672,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.33.4" description="August 24, 2026">
+<Update label="ComfyUI v0.33.4" description="August 24, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**Wan 3.0**](https://github.com/Comfy-Org/ComfyUI/pull/15843): Added Wan 3.0 text, image, and reference to video with native audio, up to 30 seconds
@@ -611,7 +682,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.33.3" description="August 20, 2026">
+<Update label="ComfyUI v0.33.3" description="August 20, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**Flux Video Upscale**](https://github.com/Comfy-Org/ComfyUI/pull/15753): Upscale video 1.5x to 3x with FLUX super-resolution
@@ -621,7 +692,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.33.2" description="August 17, 2026">
+<Update label="ComfyUI v0.33.2" description="August 17, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**Fish Audio**](https://github.com/Comfy-Org/ComfyUI/pull/15612): Added text-to-speech, speech-to-text, voice selector, and instant voice clone nodes
@@ -633,7 +704,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.33.1" description="August 13, 2026">
+<Update label="ComfyUI v0.33.1" description="August 13, 2026" tags={["ComfyUI"]}>
 
 **New Open-Source Model Support**
 * [**MiniMax Music 3**](https://links.comfy.org/4zmDV3G): Native text-to-music support for songs up to 5 minutes from caption and lyrics
@@ -663,7 +734,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.32.0" description="August 11, 2026">
+<Update label="ComfyUI v0.32.0" description="August 11, 2026" tags={["ComfyUI"]}>
 
 **New Open-Source Model Support**
 * [**LTX 2.5**](https://links.comfy.org/docLTX2_5): Native LTX 2.5 support with STG, dual CFG, and duration prediction
@@ -696,7 +767,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.31.0" description="August 7, 2026">
+<Update label="ComfyUI v0.31.0" description="August 7, 2026" tags={["ComfyUI"]}>
 
 **New Open-Source Model Support**
 * [**Wan-Animate2**](https://github.com/Comfy-Org/ComfyUI/pull/15362): Native Wan-Animate2 with pose/reference controls and optional pose-branch cache (CORE-358)
@@ -735,7 +806,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.30.2" description="August 5, 2026">
+<Update label="ComfyUI v0.30.2" description="August 5, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**BFL Flux 3 Video**](https://links.comfy.org/3TVdf9N): Added Flux 3 video model support
@@ -744,14 +815,14 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.30.1" description="August 3, 2026">
+<Update label="ComfyUI v0.30.1" description="August 3, 2026" tags={["ComfyUI"]}>
 
 **Performance & Stability**
 * [**Frontend**](https://github.com/Comfy-Org/ComfyUI/pull/15244): Bumped comfyui-frontend-package to 1.47.12
 
 </Update>
 
-<Update label="v0.30.0" description="August 3, 2026">
+<Update label="ComfyUI v0.30.0" description="August 3, 2026" tags={["ComfyUI"]}>
 
 **New Open-Source Model Support**
 * [**MiniMax-H3**](https://links.comfy.org/3TuT9TO): MiniMax-H3 audio-video model support (CORE-375)
@@ -786,7 +857,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.29.2" description="July 31, 2026">
+<Update label="ComfyUI v0.29.2" description="July 31, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**Ideogram P-Image**](https://github.com/Comfy-Org/ComfyUI/pull/15154): Added Ideogram P-Image model support
@@ -794,7 +865,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.29.1" description="July 31, 2026">
+<Update label="ComfyUI v0.29.1" description="July 31, 2026" tags={["ComfyUI"]}>
 
 **Bug Fixes**
 * [**user.css**](https://github.com/Comfy-Org/ComfyUI/pull/15000): Fixed `user.css` loading broken by a prior frontend change
@@ -802,7 +873,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.29.0" description="July 29, 2026">
+<Update label="ComfyUI v0.29.0" description="July 29, 2026" tags={["ComfyUI"]}>
 
 **New Open-Source Model Support**
 * [**JoyImageEdit**](https://github.com/Comfy-Org/ComfyUI/pull/14428): Native JoyImageEdit model support
@@ -841,7 +912,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.28.3" description="July 22, 2026">
+<Update label="ComfyUI v0.28.3" description="July 22, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**Gemini Video Omni**](https://github.com/Comfy-Org/ComfyUI/pull/15014): Pass videos as inline data in Gemini Omni partner node
@@ -850,14 +921,14 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.28.2" description="July 18, 2026">
+<Update label="ComfyUI v0.28.2" description="July 18, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**Gemini Video Omni**](https://github.com/Comfy-Org/ComfyUI/pull/14984): Switched Omni model to the Interactions API
 
 </Update>
 
-<Update label="v0.28.1" description="July 17, 2026">
+<Update label="ComfyUI v0.28.1" description="July 17, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**GPT-5.6**](https://github.com/Comfy-Org/ComfyUI/pull/14957): Added GPT-5.6 Sol, Terra, and Luna models
@@ -866,7 +937,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.28.0" description="July 15, 2026">
+<Update label="ComfyUI v0.28.0" description="July 15, 2026" tags={["ComfyUI"]}>
 
 **New Open-Source Model Support**
 * [**SeedVR2**](https://github.com/Comfy-Org/workflow_templates/blob/main/templates/utility_seedvr2_3b_int8_upscale_image.json): Native SeedVR2 image and video upscaling ([#14424](https://github.com/Comfy-Org/ComfyUI/pull/14424))
@@ -901,7 +972,7 @@ icon: "clock-rotate-left"
 * [**HiDream O1**](https://github.com/Comfy-Org/ComfyUI/pull/14923): Fixed HiDream O1 regression
 </Update>
 
-<Update label="v0.27.1" description="July 8, 2026">
+<Update label="ComfyUI v0.27.1" description="July 8, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**Seedream 5 Pro**](https://links.comfy.org/3R12fXw): ByteDance Seedream 5 Pro image generation model support
@@ -914,7 +985,7 @@ icon: "clock-rotate-left"
 
 </Update>
 
-<Update label="v0.27.0" description="June 30, 2026">
+<Update label="ComfyUI v0.27.0" description="June 30, 2026" tags={["ComfyUI"]}>
 
 **int8 Model Support**
 This release adds support for **int8 convrot models**, bringing significant performance improvements for quantized models. int8 support now works on Turing GPUs and newer, with optimized LoRA applying and memory management.
@@ -946,14 +1017,14 @@ This release adds support for **int8 convrot models**, bringing significant perf
 
 </Update>
 
-<Update label="v0.26.2" description="June 25, 2026">
+<Update label="ComfyUI v0.26.2" description="June 25, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**SeeDance 2.0 Mini**](https://links.comfy.org/4eOUnjJ): Added support for ByteDance SeeDance 2.0 Mini on Text-to-Video, First-Last-Frame, and Reference nodes
 
 </Update>
 
-<Update label="v0.26.1" description="June 24, 2026">
+<Update label="ComfyUI v0.26.1" description="June 24, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**SeeDance 2.0**](https://github.com/Comfy-Org/ComfyUI/pull/14614): Added 4K resolution support for ByteDance SeeDance 2.0
@@ -962,7 +1033,7 @@ This release adds support for **int8 convrot models**, bringing significant perf
 
 </Update>
 
-<Update label="v0.26.0" description="June 23, 2026">
+<Update label="ComfyUI v0.26.0" description="June 23, 2026" tags={["ComfyUI"]}>
 
 **New Open-Source Model Support**
 * [**Krea2**](https://links.comfy.org/4eC8714): Krea's open-source image model with wide aesthetic and stylistic range — open-weight **RAW** / **Turbo** pair; train LoRAs on RAW, run 8-step inference on Turbo
@@ -991,14 +1062,14 @@ This release adds support for **int8 convrot models**, bringing significant perf
 
 </Update>
 
-<Update label="v0.25.1" description="June 16, 2026">
+<Update label="ComfyUI v0.25.1" description="June 16, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**Kling V3-Turbo**](https://github.com/Comfy-Org/ComfyUI/pull/14528): Added support for Kling V3-Turbo model
 
 </Update>
 
-<Update label="v0.25.0" description="June 16, 2026">
+<Update label="ComfyUI v0.25.0" description="June 16, 2026" tags={["ComfyUI"]}>
 
 **New Open-Source Model Support**
 * [**Depth Anything 3**](https://github.com/Comfy-Org/ComfyUI/pull/13853): Monocular depth estimation model from LiheYoung
@@ -1036,7 +1107,7 @@ This release adds support for **int8 convrot models**, bringing significant perf
 
 </Update>
 
-<Update label="v0.24.1" description="June 3, 2026">
+<Update label="ComfyUI v0.24.1" description="June 3, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * Added Bria Green Background node
@@ -1049,7 +1120,7 @@ This release adds support for **int8 convrot models**, bringing significant perf
 
 </Update>
 
-<Update label="v0.24.0" description="June 3, 2026">
+<Update label="ComfyUI v0.24.0" description="June 3, 2026" tags={["ComfyUI"]}>
 
 **New Open-Source Model Support**
 * [**Ideogram 4**](https://github.com/Comfy-Org/ComfyUI/pull/14259): Day-0 support for Ideogram's open-weight text-to-image model. Based on a NextDiT/Lumina2-family single-stream DiT with Qwen3-VL-8B (13-layer hidden-state tap) as text encoder. Includes new **Ideogram4Scheduler**, **DualModelGuider** (conditional/unconditional on separate models), and **CFGOverride** nodes
@@ -1076,7 +1147,7 @@ This release adds support for **int8 convrot models**, bringing significant perf
 
 </Update>
 
-<Update label="v0.23.0" description="June 1, 2026">
+<Update label="ComfyUI v0.23.0" description="June 1, 2026" tags={["ComfyUI"]}>
 
 **New Open-Source Model Support**
 * [**Microsoft Lens**](https://github.com/Comfy-Org/ComfyUI/pull/14077): Support for Microsoft's Lens text-to-image model with GPT-OSS-20B MoE text encoder (converted to nvfp4). Tokenizer is embedded directly in the safetensors file
@@ -1134,7 +1205,7 @@ This release adds support for **int8 convrot models**, bringing significant perf
 
 </Update>
 
-<Update label="v0.22.3" description="May 20, 2026">
+<Update label="ComfyUI v0.22.3" description="May 20, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * Added Krea2 Image nodes
@@ -1142,7 +1213,7 @@ This release adds support for **int8 convrot models**, bringing significant perf
 
 </Update>
 
-<Update label="v0.22.2" description="May 20, 2026">
+<Update label="ComfyUI v0.22.2" description="May 20, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * Added Rodin2.5 nodes with quality mesh options (usdz export disabled)
@@ -1150,7 +1221,7 @@ This release adds support for **int8 convrot models**, bringing significant perf
 
 </Update>
 
-<Update label="v0.22.1" description="May 20, 2026">
+<Update label="ComfyUI v0.22.1" description="May 20, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * Added OpenRouter LLM node
@@ -1160,7 +1231,7 @@ This release adds support for **int8 convrot models**, bringing significant perf
 
 </Update>
 
-<Update label="v0.22.0" description="May 20, 2026">
+<Update label="ComfyUI v0.22.0" description="May 20, 2026" tags={["ComfyUI"]}>
 
 **Open-Source Model Support**
 * [**Stable Audio 3.0**](https://blog.comfy.org/p/stable-audio-3-day-0-support): Support for the latest Stable Audio 3 model with improved audio generation capabilities
@@ -1197,7 +1268,7 @@ This release adds support for **int8 convrot models**, bringing significant perf
 
 </Update>
 
-<Update label="v0.21.1" description="May 13, 2026">
+<Update label="ComfyUI v0.21.1" description="May 13, 2026" tags={["ComfyUI"]}>
 
 **New Partner Nodes**
 * **Flux2ImageNode and GrokImageEditNodeV2:** Added new nodes for enhanced image generation and editing workflows
@@ -1227,7 +1298,7 @@ This release adds support for **int8 convrot models**, bringing significant perf
 
 </Update>
 
-<Update label="v0.21.0" description="May 11, 2026">
+<Update label="ComfyUI v0.21.0" description="May 11, 2026" tags={["ComfyUI"]}>
 
 **Open-source model support**
 * [**BiRefNet**](https://github.com/Comfy-Org/ComfyUI/pull/12747): Background removal
@@ -1270,7 +1341,7 @@ This release adds support for **int8 convrot models**, bringing significant perf
 
 </Update>
 
-<Update label="v0.20.3" description="April 27, 2026">
+<Update label="ComfyUI v0.20.3" description="April 27, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * Added Luma UNI-1 models
@@ -1284,7 +1355,7 @@ This release adds support for **int8 convrot models**, bringing significant perf
 
 </Update>
 
-<Update label="v0.20.2" description="April 27, 2026">
+<Update label="ComfyUI v0.20.2" description="April 27, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * Added Topaz Astra 2 model (now default upscaler)
@@ -1299,7 +1370,7 @@ This release adds support for **int8 convrot models**, bringing significant perf
 
 </Update>
 
-<Update label="v0.20.1" description="April 27, 2026">
+<Update label="ComfyUI v0.20.1" description="April 27, 2026" tags={["ComfyUI"]}>
 
 **New Model Support**
 * **SUPIR:** Added support for SUPIR image super-resolution models
@@ -1338,7 +1409,7 @@ This release adds support for **int8 convrot models**, bringing significant perf
 
 </Update>
 
-<Update label="v0.20.0" description="April 27, 2026">
+<Update label="ComfyUI v0.20.0" description="April 27, 2026" tags={["ComfyUI"]}>
 
 **New Model Support**
 * **SUPIR model support:** Added enhanced super-resolution capabilities for high-quality upscaling workflows
@@ -1376,7 +1447,7 @@ This release adds support for **int8 convrot models**, bringing significant perf
 
 </Update>
 
-<Update label="v0.19.5" description="April 17, 2026">
+<Update label="ComfyUI v0.19.5" description="April 17, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * Added SD2 Real Human support for Stable Diffusion 2
@@ -1389,7 +1460,7 @@ This release adds support for **int8 convrot models**, bringing significant perf
 
 </Update>
 
-<Update label="v0.19.4" description="April 17, 2026">
+<Update label="ComfyUI v0.19.4" description="April 17, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * Added 4K resolution support for Veo models + Veo 3 Lite model
@@ -1404,7 +1475,7 @@ This release adds support for **int8 convrot models**, bringing significant perf
 
 </Update>
 
-<Update label="v0.19.3" description="April 17, 2026">
+<Update label="ComfyUI v0.19.3" description="April 17, 2026" tags={["ComfyUI"]}>
 
 **LTX text generation**
 * Implemented `use_default_template` for LTX models in text generation nodes
@@ -1416,7 +1487,7 @@ This release adds support for **int8 convrot models**, bringing significant perf
 
 </Update>
 
-<Update label="v0.19.2" description="April 17, 2026">
+<Update label="ComfyUI v0.19.2" description="April 17, 2026" tags={["ComfyUI"]}>
 
 **Performance & memory**
 * Fixed OOM regression in quantized models during inference, improving memory usage for _apply() operations
@@ -1433,7 +1504,7 @@ This release adds support for **int8 convrot models**, bringing significant perf
 
 </Update>
 
-<Update label="v0.19.1" description="April 16, 2026">
+<Update label="ComfyUI v0.19.1" description="April 16, 2026" tags={["ComfyUI"]}>
 
 **New Model Support**
 * [Ernie Image Text to Image](https://blog.comfy.org/p/ernie-image-day-0-support)
@@ -1447,7 +1518,7 @@ This release adds support for **int8 convrot models**, bringing significant perf
 
 </Update>
 
-<Update label="v0.19.0" description="April 13, 2026">
+<Update label="ComfyUI v0.19.0" description="April 13, 2026" tags={["ComfyUI"]}>
 
 **Model & Generation Support**
 - Added support for LTX2 reference audio (ID-LoRA) functionality
@@ -1494,14 +1565,14 @@ This release adds support for **int8 convrot models**, bringing significant perf
 
 </Update>
 
-<Update label="v0.18.5" description="March 25, 2026">
+<Update label="ComfyUI v0.18.5" description="March 25, 2026" tags={["ComfyUI"]}>
 
 **Stability**
 * Additional testing after fp8 checkpoint fix revert
 
 </Update>
 
-<Update label="v0.18.4" description="March 25, 2026">
+<Update label="ComfyUI v0.18.4" description="March 25, 2026" tags={["ComfyUI"]}>
 
 **Bug Fixes**
 * Fixed pinned memory accounting for Windows, reducing risk of OOM errors
@@ -1513,14 +1584,14 @@ This release adds support for **int8 convrot models**, bringing significant perf
 
 </Update>
 
-<Update label="v0.18.3" description="March 25, 2026">
+<Update label="ComfyUI v0.18.3" description="March 25, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * Added new Topaz model in API nodes
 
 </Update>
 
-<Update label="v0.18.2" description="March 25, 2026">
+<Update label="ComfyUI v0.18.2" description="March 25, 2026" tags={["ComfyUI"]}>
 
 **Partner Node(API)**
 - Grok Reference to Video
@@ -1528,7 +1599,7 @@ This release adds support for **int8 convrot models**, bringing significant perf
 - [Blog](https://blog.comfy.org/p/grok-imagine-model-feature-updates)
 </Update>
 
-<Update label="v0.18.1" description="March 23, 2026">
+<Update label="ComfyUI v0.18.1" description="March 23, 2026" tags={["ComfyUI"]}>
 
 **FP16 Support Fixes**
 - Fixed Canny node compatibility with FP16 precision, resolving workflow issues when using 16-bit floating point operations
@@ -1540,7 +1611,7 @@ This release adds support for **int8 convrot models**, bringing significant perf
 
 </Update>
 
-<Update label="v0.18.0" description="March 21, 2026">
+<Update label="ComfyUI v0.18.0" description="March 21, 2026" tags={["ComfyUI"]}>
 
 **Memory & Performance Optimizations**
 - Added `--fp16-intermediates` flag to use FP16 for intermediate values between operations, reducing VRAM usage
@@ -1577,19 +1648,19 @@ This release adds support for **int8 convrot models**, bringing significant perf
 
 </Update>
 
-<Update label="v0.17.2" description="March 15, 2026">
+<Update label="ComfyUI v0.17.2" description="March 15, 2026" tags={["ComfyUI"]}>
 
 This release focuses on stability and bug fixes. For complete technical details, see the [full changelog](https://github.com/Comfy-Org/ComfyUI/compare/v0.17.1...v0.17.2) on GitHub.
 
 </Update>
 
-<Update label="v0.17.1" description="March 13, 2026">
+<Update label="ComfyUI v0.17.1" description="March 13, 2026" tags={["ComfyUI"]}>
 
 This is a patch release that includes various bug fixes and stability improvements. For full details on changes included in this release, see the complete changelog comparison between v0.17.0 and v0.17.1.
 
 </Update>
 
-<Update label="v0.17.0" description="March 13, 2026">
+<Update label="ComfyUI v0.17.0" description="March 13, 2026" tags={["ComfyUI"]}>
 
 **Architecture & Performance Improvements**
 - Implemented modular asset architecture with asynchronous two-phase scanner and background seeder for improved loading performance
@@ -1622,7 +1693,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.16.4" description="March 7, 2026">
+<Update label="ComfyUI v0.16.4" description="March 7, 2026" tags={["ComfyUI"]}>
 
 **New Nodes & Features**
 - Added Math Expression node with simpleeval evaluation for mathematical operations in workflows
@@ -1640,7 +1711,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.16.3" description="March 5, 2026">
+<Update label="ComfyUI v0.16.3" description="March 5, 2026" tags={["ComfyUI"]}>
 
 **LTX Audio Model Improvements**
 - Fixed LTX2 vocoder conv_transpose1d with manual casting for improved audio processing stability
@@ -1649,7 +1720,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.16.2" description="March 5, 2026">
+<Update label="ComfyUI v0.16.2" description="March 5, 2026" tags={["ComfyUI"]}>
 
 **Core Updates**
 - Updated comfy-aimdo to version 0.2.7 for improved AI model operations
@@ -1661,7 +1732,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.16.1" description="March 5, 2026">
+<Update label="ComfyUI v0.16.1" description="March 5, 2026" tags={["ComfyUI"]}>
 
 **API Nodes Updates**
 - Updated xAI models and pricing for improved cost management and model selection
@@ -1672,7 +1743,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.16.0" description="March 5, 2026">
+<Update label="ComfyUI v0.16.0" description="March 5, 2026" tags={["ComfyUI"]}>
 
 **New Nodes & Features**
 - Added ResolutionSelector node with aspect ratio presets for easier image dimension setup
@@ -1713,7 +1784,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.15.1" description="February 26, 2026">
+<Update label="ComfyUI v0.15.1" description="February 26, 2026" tags={["ComfyUI"]}>
 
 **Bug Fixes & Stability**
 - Fixed KeyError when prompt entries lack class_type key, preventing workflow crashes
@@ -1737,7 +1808,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.15.0" description="February 24, 2026">
+<Update label="ComfyUI v0.15.0" description="February 24, 2026" tags={["ComfyUI"]}>
 
 **New Nodes & Features**
 - Added BBox widget for precise bounding box selection in image workflows
@@ -1774,13 +1845,13 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.14.2" description="February 18, 2026">
+<Update label="ComfyUI v0.14.2" description="February 18, 2026" tags={["ComfyUI"]}>
 
 **Bug Fixes**
 - Fixed issue with Gemini/Nano banana API nodes that sometimes returned blank images, improving reliability for AI-powered image generation workflows.
 </Update>
 
-<Update label="v0.14.1" description="February 17, 2026">
+<Update label="ComfyUI v0.14.1" description="February 17, 2026" tags={["ComfyUI"]}>
 
 **Bug Fixes**
 - Fixed anima LLM adapter forward when manual cast
@@ -1795,7 +1866,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.14.0" description="February 17, 2026">
+<Update label="ComfyUI v0.14.0" description="February 17, 2026" tags={["ComfyUI"]}>
 
 **New Open-Source Model Support**
 * [**Qwen 2512 ControlNet / Fun ControlNet**](https://github.com/Comfy-Org/ComfyUI/pull/12359): Support for Qwen-based ControlNet models for enhanced image control
@@ -1826,7 +1897,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.13.0" description="February 10, 2026">
+<Update label="ComfyUI v0.13.0" description="February 10, 2026" tags={["ComfyUI"]}>
 
 **New Model Support & Improvements**
 * [**EasyCache: LTX2 Support**](https://github.com/Comfy-Org/ComfyUI/pull/12231): EasyCache now works with LTX2 for faster video generation
@@ -1846,7 +1917,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.12.3" description="February 5, 2026">
+<Update label="ComfyUI v0.12.3" description="February 5, 2026" tags={["ComfyUI"]}>
 
 **ACE Step 1.5 Improvements**
 * [**LLM sampling options**](https://github.com/Comfy-Org/ComfyUI/pull/12295): Added sampling options and reference audio support
@@ -1860,7 +1931,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.12.2" description="February 4, 2026">
+<Update label="ComfyUI v0.12.2" description="February 4, 2026" tags={["ComfyUI"]}>
 
 **ACE Step 1.5**
 * [**4B LM model support**](https://github.com/Comfy-Org/ComfyUI/pull/12257): Support for the 4B ACE step 1.5 language model
@@ -1868,7 +1939,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.12.1" description="February 3, 2026">
+<Update label="ComfyUI v0.12.1" description="February 3, 2026" tags={["ComfyUI"]}>
 
 **ACE Step 1.5 Fixes**
 * [**Progress bar**](https://github.com/Comfy-Org/ComfyUI/pull/12242): Added progress bar for ACE Step
@@ -1882,7 +1953,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.12.0" description="February 3, 2026">
+<Update label="ComfyUI v0.12.0" description="February 3, 2026" tags={["ComfyUI"]}>
 
 **New Model Support**
 * [**ACE Step 1.5**](https://github.com/Comfy-Org/ComfyUI/pull/12237): Basic support for the ACE Step 1.5 audio/speech generation model — a major new model family
@@ -1903,7 +1974,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.11.1" description="January 29, 2026">
+<Update label="ComfyUI v0.11.1" description="January 29, 2026" tags={["ComfyUI"]}>
 
 **Partner Node Updates**
 * [**Grok Imagine API nodes**](https://github.com/Comfy-Org/ComfyUI/pull/12136): Image generation via Grok
@@ -1915,7 +1986,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.11.0" description="January 27, 2026">
+<Update label="ComfyUI v0.11.0" description="January 27, 2026" tags={["ComfyUI"]}>
 
 **New Open-Source Model Support**
 * [**Anima Model**](https://github.com/Comfy-Org/ComfyUI/pull/12012): Support for the Anima model family with fp16 optimization
@@ -1945,7 +2016,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.10.0" description="January 21, 2026">
+<Update label="ComfyUI v0.10.0" description="January 21, 2026" tags={["ComfyUI"]}>
 
 **New Features**
 * [**API Node Auto-Discovery**](https://github.com/Comfy-Org/ComfyUI/pull/11943): All `nodes_*.py` files are now auto-discovered, simplifying node development
@@ -1964,7 +2035,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.9.2" description="January 15, 2026">
+<Update label="ComfyUI v0.9.2" description="January 15, 2026" tags={["ComfyUI"]}>
 
 **New Model Support**
 * [**Flux2 Klein**](https://github.com/Comfy-Org/ComfyUI/pull/11890): Major new model family support — Flux2 Klein with expanded model capabilities
@@ -1984,14 +2055,14 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.9.1" description="January 13, 2026">
+<Update label="ComfyUI v0.9.1" description="January 13, 2026" tags={["ComfyUI"]}>
 
 **Bug Fix**
 * Bumped LTXAV memory estimation
 
 </Update>
 
-<Update label="v0.9.0" description="January 13, 2026">
+<Update label="ComfyUI v0.9.0" description="January 13, 2026" tags={["ComfyUI"]}>
 
 **New Features**
 * [**Basic Asset Support**](https://github.com/Comfy-Org/ComfyUI/pull/11315): Foundation for model asset management — endpoints for model CRUD operations
@@ -2019,7 +2090,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.8.1" description="January 8, 2026">
+<Update label="ComfyUI v0.8.1" description="January 8, 2026" tags={["ComfyUI"]}>
 
 **Model Support**
 - Added Gemma 12B support with quantized weights
@@ -2038,7 +2109,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.8.0" description="January 7, 2026">
+<Update label="ComfyUI v0.8.0" description="January 7, 2026" tags={["ComfyUI"]}>
 
 **New Models Support**
 - Added LTXV 2 model support
@@ -2065,7 +2136,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 - Code refactoring and cleanup (CLIP preprocessing, comfy-kitchen integration)
 </Update>
 
-<Update label="v0.7.0" description="December 31, 2025">
+<Update label="ComfyUI v0.7.0" description="December 31, 2025" tags={["ComfyUI"]}>
 **System Requirements**
 - PyTorch 2.4+ minimum version requirement
 
@@ -2095,7 +2166,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 - Optimized Lumina/Z image model (removed unused components)
 </Update>
 
-<Update label="v0.6.0" description="December 24, 2025">
+<Update label="ComfyUI v0.6.0" description="December 24, 2025" tags={["ComfyUI"]}>
 
 **New Model Support**
 - Qwen Image Layered
@@ -2116,7 +2187,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.5.1" description="December 18, 2025">
+<Update label="ComfyUI v0.5.1" description="December 18, 2025" tags={["ComfyUI"]}>
 
 - Added GPT-Image-1.5 API nodes
 - Fixed V3 nodes processing regression
@@ -2124,7 +2195,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.5.0" description="December 17, 2025">
+<Update label="ComfyUI v0.5.0" description="December 17, 2025" tags={["ComfyUI"]}>
 
 **New Models & Features**
 - WanMove model for advanced motion processing
@@ -2143,7 +2214,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.4.0" description="December 10, 2025">
+<Update label="ComfyUI v0.4.0" description="December 10, 2025" tags={["ComfyUI"]}>
 
 **Model Support**
 - Ovis Image
@@ -2192,7 +2263,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 - Please download the latest Desktop version from [here](https://www.comfy.org/download) to get the latest features.
 </Update>
 
-<Update label="v0.3.76" description="December 2, 2025">
+<Update label="ComfyUI v0.3.76" description="December 2, 2025" tags={["ComfyUI"]}>
 
 **Frontend UI/UX**
 - New UI: **Nodes 2.0** public beta
@@ -2222,7 +2293,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.3.75" description="November 26, 2025">
+<Update label="ComfyUI v0.3.75" description="November 26, 2025" tags={["ComfyUI"]}>
 
 **New Model Support**
 - Added Z Image model with optimized performance for image processing workflows
@@ -2233,7 +2304,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.3.73" description="November 26, 2025">
+<Update label="ComfyUI v0.3.73" description="November 26, 2025" tags={["ComfyUI"]}>
 
 **Bug Fixes**
 - Fixed critical system crashes that could interrupt workflow execution
@@ -2241,7 +2312,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.3.72" description="November 25, 2025">
+<Update label="ComfyUI v0.3.72" description="November 25, 2025" tags={["ComfyUI"]}>
 
 **New Model Support**
 - Added comprehensive Flux 2 model support including Flux 2 Pro API nodes
@@ -2267,7 +2338,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.3.71" description="November 21, 2025">
+<Update label="ComfyUI v0.3.71" description="November 21, 2025" tags={["ComfyUI"]}>
 
 **Model Compatibility & Enhancements**
 - **HunyuanVideo 1.5 Support**: Added compatibility for the latest version of HunyuanVideo models, expanding video generation capabilities
@@ -2290,7 +2361,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.3.70" description="November 19, 2025">
+<Update label="ComfyUI v0.3.70" description="November 19, 2025" tags={["ComfyUI"]}>
 
 **CUDA 12.6 Support & Distribution**
 - Added official CUDA 12.6 release workflow and portable download support for enhanced GPU compatibility
@@ -2311,7 +2382,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.3.69" description="November 18, 2025">
+<Update label="ComfyUI v0.3.69" description="November 18, 2025" tags={["ComfyUI"]}>
 
 **Memory & Performance Optimizations**
 - **Pinned Memory Enabled by Default** for NVIDIA and AMD GPUs
@@ -2332,7 +2403,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.3.68" description="November 5, 2025">
+<Update label="ComfyUI v0.3.68" description="November 5, 2025" tags={["ComfyUI"]}>
 
 **Performance & Memory Optimizations**
 - Introduced **Mixed Precision Quantization System** for optimized model loading
@@ -2359,7 +2430,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.3.67" description="October 28, 2025">
+<Update label="ComfyUI v0.3.67" description="October 28, 2025" tags={["ComfyUI"]}>
 
 **API Nodes**
 - **LTXV API Integration**: Added new LTXV API nodes for Lightricks LTX video generation
@@ -2381,7 +2452,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.3.66" description="October 21, 2025">
+<Update label="ComfyUI v0.3.66" description="October 21, 2025" tags={["ComfyUI"]}>
 
 **Frontend Updates**
 - **Subgraph Widget Editing**: Edit subgraph parameters directly from new Parameters panel without entering the subgraph
@@ -2407,7 +2478,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 - Added deprecation warnings for unused files
 </Update>
 
-<Update label="v0.3.65" description="October 14, 2025">
+<Update label="ComfyUI v0.3.65" description="October 14, 2025" tags={["ComfyUI"]}>
 
 **Node Schema Migration (V3)**
 - Migrated core node categories to V3 schema including model downscale, LoRA extraction, compositing, latent ops, SD3/SLG, Flux, upscale models, and HunyuanVideo nodes
@@ -2432,14 +2503,14 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.3.64" description="October 8, 2025">
+<Update label="ComfyUI v0.3.64" description="October 8, 2025" tags={["ComfyUI"]}>
 
 **API Nodes**
 - Added Sora2 API node for OpenAI's video generation API
 
 </Update>
 
-<Update label="v0.3.63" description="October 6, 2025">
+<Update label="ComfyUI v0.3.63" description="October 6, 2025" tags={["ComfyUI"]}>
 
 **Model Compatibility Enhancements**
 - **HunyuanVAE Support**: Added support for the new HunyuanVAE, expanding model compatibility for advanced image generation workflows
@@ -2465,14 +2536,14 @@ This is a patch release that includes various bug fixes and stability improvemen
 - **Node Selection Toolbox Redesign**: Redesigned the node selection toolbox
 </Update>
 
-<Update label="v0.3.62" description="September 30, 2025">
+<Update label="ComfyUI v0.3.62" description="September 30, 2025" tags={["ComfyUI"]}>
 
 **API Node**
 - **Rodin3D-Gen2 Parameter Fix**
 - **Seedance Pro Model Support**
 </Update>
 
-<Update label="v0.3.61" description="September 30, 2025">
+<Update label="ComfyUI v0.3.61" description="September 30, 2025" tags={["ComfyUI"]}>
 
 **API Node**
 - **Rodin3D Gen-2**: Rodin's most powerful image-to-3D tool, is now live in ComfyUI!
@@ -2490,7 +2561,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 - **Sampler CFG Enhancement**: Added 'input_cond' and 'input_uncond' parameters to sampler CFG function arguments for more flexible conditioning control
 </Update>
 
-<Update label="v0.3.60" description="September 23, 2025">
+<Update label="ComfyUI v0.3.60" description="September 23, 2025" tags={["ComfyUI"]}>
 
 **New Model Support**
 - **Wan2.2 Animate**: Support for Wan2.2 Animate video generation model with character replacement and motion transfer capabilities
@@ -2515,14 +2586,14 @@ This is a patch release that includes various bug fixes and stability improvemen
 
 </Update>
 
-<Update label="v0.3.59" description="September 10, 2025">
+<Update label="ComfyUI v0.3.59" description="September 10, 2025" tags={["ComfyUI"]}>
 
 **ByteDance Seedream 4.0 Integration**
 - **New Seedream Node**: Added ByteDanceSeedream (4.0) node.
 
 </Update>
 
-<Update label="v0.3.58" description="September 6, 2025">
+<Update label="ComfyUI v0.3.58" description="September 6, 2025" tags={["ComfyUI"]}>
 
 **New Model Support**
 - Hunyuan Image 2.1 regular model
@@ -2533,7 +2604,7 @@ This is a patch release that includes various bug fixes and stability improvemen
 - Seedance Video API
 </Update>
 
-<Update label="v0.3.57" description="September 4, 2025">
+<Update label="ComfyUI v0.3.57" description="September 4, 2025" tags={["ComfyUI"]}>
 
 **ByteDance USO Model Support**
 - **UXO Subject Identity LoRA Support**: It's a subject identity LoRA model based on FLUX architecture
@@ -2553,13 +2624,13 @@ This is a patch release that includes various bug fixes and stability improvemen
 - **Ideogram Character Reference**: Ideogram v3 API now supports character reference
 </Update>
 
-<Update label="v0.3.56" description="August 30, 2025">
+<Update label="ComfyUI v0.3.56" description="August 30, 2025" tags={["ComfyUI"]}>
 
 **Performance Enhancement**
 - **Reduced RAM Usage on Windows**
 </Update>
 
-<Update label="v0.3.55" description="August 29, 2025">
+<Update label="ComfyUI v0.3.55" description="August 29, 2025" tags={["ComfyUI"]}>
 
 **Wan2.2 S2V Workflow Enhancements & Model Support Expansion**
 
@@ -2579,7 +2650,7 @@ This release focuses on Wan2.2 S2V related video workflow capabilities and model
 
 </Update>
 
-<Update label="v0.3.54" description="August 28, 2025">
+<Update label="ComfyUI v0.3.54" description="August 28, 2025" tags={["ComfyUI"]}>
 
 **Node Model Patch Improvements**
 
@@ -2593,7 +2664,7 @@ This focused update improves the core node model patching system that underpins 
 
 </Update>
 
-<Update label="v0.3.53" description="August 28, 2025">
+<Update label="ComfyUI v0.3.53" description="August 28, 2025" tags={["ComfyUI"]}>
 
 **Audio Workflow Integration & Enhanced Performance Optimizations**
 
@@ -2629,7 +2700,7 @@ This release adds ComfyUI audio processing capabilities and includes performance
 
 </Update>
 
-<Update label="v0.3.52" description="August 23, 2025">
+<Update label="ComfyUI v0.3.52" description="August 23, 2025" tags={["ComfyUI"]}>
 
 **Enhanced Model Support & Qwen Image ControlNet Integration**
 
@@ -2659,7 +2730,7 @@ This release significantly expands ControlNet capabilities and improves model co
 
 </Update>
 
-<Update label="v0.3.51" description="August 20, 2025">
+<Update label="ComfyUI v0.3.51" description="August 20, 2025" tags={["ComfyUI"]}>
 
 **Model Support**
 - **Qwen-Image-Edit Model**: Native support for Qwen-Image-Edit
@@ -2700,7 +2771,7 @@ This release significantly expands ControlNet capabilities and improves model co
 
 </Update>
 
-<Update label="v0.3.50" description="August 13, 2025">
+<Update label="ComfyUI v0.3.50" description="August 13, 2025" tags={["ComfyUI"]}>
 
 **Model Integration & Performance Enhancements**
 
@@ -2735,7 +2806,7 @@ This release expands ComfyUI's model ecosystem with enhanced Qwen support, async
 
 </Update>
 
-<Update label="v0.3.49" description="August 5, 2025">
+<Update label="ComfyUI v0.3.49" description="August 5, 2025" tags={["ComfyUI"]}>
 
 **UI Experience & Model Support**
 
@@ -2771,7 +2842,7 @@ This release brings user experience improvements and model support that enhance 
 
 </Update>
 
-<Update label="v0.3.48" description="August 2, 2025">
+<Update label="ComfyUI v0.3.48" description="August 2, 2025" tags={["ComfyUI"]}>
 
 **API Enhancement & Performance Optimizations**
 
@@ -2801,7 +2872,7 @@ This release introduces backend improvements and performance optimizations that 
 
 </Update>
 
-<Update label="v0.3.47" description="July 30, 2025">
+<Update label="ComfyUI v0.3.47" description="July 30, 2025" tags={["ComfyUI"]}>
 
 **Memory Optimization & Large Model Performance**
 
@@ -2822,7 +2893,7 @@ This release focuses on memory optimizations for large model workflows, improvin
 
 </Update>
 
-<Update label="v0.3.46" description="July 28, 2025">
+<Update label="ComfyUI v0.3.46" description="July 28, 2025" tags={["ComfyUI"]}>
 
 **Hardware Acceleration & Audio Processing**
 
@@ -2863,7 +2934,7 @@ This release expands hardware support and enhances audio processing capabilities
 
 </Update>
 
-<Update label="v0.3.45" description="July 21, 2025">
+<Update label="ComfyUI v0.3.45" description="July 21, 2025" tags={["ComfyUI"]}>
 
 **Sampling & Training Improvements**
 
@@ -2905,7 +2976,7 @@ This release introduces enhancements to sampling algorithms, training capabiliti
 
 </Update>
 
-<Update label="v0.3.44" description="July 8, 2025">
+<Update label="ComfyUI v0.3.44" description="July 8, 2025" tags={["ComfyUI"]}>
 
 **Sampling & Model Control Enhancements**
 
@@ -2947,7 +3018,7 @@ This release delivers improvements to sampling algorithms and model control syst
 
 </Update>
 
-<Update label="v0.3.43" description="June 30, 2025">
+<Update label="ComfyUI v0.3.43" description="June 30, 2025" tags={["ComfyUI"]}>
 
 **Model Support & Workflow Reliability**
 
@@ -2959,7 +3030,7 @@ This release brings improvements to model compatibility and workflow stability:
 
 </Update>
 
-<Update label="v0.3.41" description="June 17, 2025">
+<Update label="ComfyUI v0.3.41" description="June 17, 2025" tags={["ComfyUI"]}>
 
 **Model Support Additions**
 - **Cosmos Predict2 Support**: Implementation for text-to-image (2B and 14B models) and image-to-video generation workflows
@@ -2990,7 +3061,7 @@ This release brings improvements to model compatibility and workflow stability:
 
 </Update>
 
-<Update label="v0.3.40" description="June 5, 2025">
+<Update label="ComfyUI v0.3.40" description="June 5, 2025" tags={["ComfyUI"]}>
 
 **Workflow Tools & Performance Optimizations**
 

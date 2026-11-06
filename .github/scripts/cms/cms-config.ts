@@ -19,6 +19,16 @@ export interface CmsProjectConfig {
   docs_en?: string;
   default_attention?: AttentionLevel;
   min_version?: string;
+  /**
+   * Cloud or Desktop docs entries folded into this project's popup as one
+   * extra section (see cms-platform.ts).
+   */
+  platform?: {
+    product: "cloud" | "desktop";
+    section_label: string;
+    since?: string;
+    max_bullets?: number;
+  };
 }
 
 export interface CmsConfig {

@@ -30,13 +30,14 @@ import {
   loadPublishedVersions,
 } from "./published-versions.ts";
 import { prepareSimplifiedEnglish } from "./cms-simplify-en.ts";
+import { foldPlatformUpdates } from "./cms-platform.ts";
 import {
   blockForVersion,
   copyProjectStaging,
   readStaging,
 } from "./cms-staging-io.ts";
 import { prepareStagingLocale } from "./cms-staging-translate.ts";
-import { translateEnvSummary } from "./cms-translate-client.ts";
+import { callTranslateApi, translateEnvSummary } from "./cms-translate-client.ts";
 import {
   incrementalVersionSet,
   resolveTargetVersions,
@@ -168,8 +169,17 @@ async function prepareForProject(
       dryRun,
       force
     );
+    const platform = await foldPlatformUpdates(
+      baseConfig,
+      projectId,
+      preparedVersions,
+      docsEnContent,
+      dryRun,
+      callTranslateApi
+    );
     console.log(
-      `[${projectId}] Done: en simplified=${simplified} (skipped ${enSkipped})`
+      `[${projectId}] Done: en simplified=${simplified} (skipped ${enSkipped}), ` +
+        `platform sections folded=${platform.folded}`
     );
     console.log(`[${projectId}] Staging: ${enStagingPath}`);
     console.log(`[${projectId}] Next: review staging EN, then pnpm cms:prepare:locales`);
@@ -268,14 +278,32 @@ async function main(): Promise<void> {
         `[${projectId}] Would merge v${preparedVersions.join(", v")} from ${primary} (keep dest EN tracking shortlinks)`
       );
     } else {
+      // EN only: each project translates its own staging EN in Step 2, and
+      // comfyui locale blocks carry the Desktop section, not Cloud's.
       const copied = await copyProjectStaging(
         baseConfig,
         primary!,
         projectId,
-        preparedVersions
+        preparedVersions,
+        ["en"]
       );
       console.log(
         `[${projectId}] Merged v${preparedVersions.join(", v")} into ${copied} staging file(s) from ${primary} (dest EN tracking shortlinks preserved)`
+      );
+      const docsEnContent = await readFile(
+        join(ROOT, configForProject(baseConfig, projectId).docs_en),
+        "utf-8"
+      );
+      const platform = await foldPlatformUpdates(
+        baseConfig,
+        projectId,
+        preparedVersions,
+        docsEnContent,
+        dryRun,
+        callTranslateApi
+      );
+      console.log(
+        `[${projectId}] Platform sections: folded=${platform.folded}, stripped=${platform.stripped}`
       );
     }
     if (projects.length > 1) console.log("");

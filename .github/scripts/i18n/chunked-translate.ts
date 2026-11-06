@@ -768,9 +768,15 @@ export function parseUpdateBlocks(body: string): ContentBlock[] {
   return blocks;
 }
 
-/** Parse ComfyUI changelog label like `v0.25.1` into numeric segments. */
+/**
+ * Parse a changelog label like `v0.25.1`, `ComfyUI v0.25.1` or
+ * `Comfy Cloud v0.485.7` into numeric segments.
+ */
 export function parseChangelogVersion(label: string): number[] {
-  const m = label.match(/^v?(\d+(?:\.\d+)*)/i);
+  const m = label
+    .trim()
+    .replace(/^(ComfyUI|Comfy Cloud|Comfy Desktop)\s+/i, "")
+    .match(/^v?(\d+(?:\.\d+)*)/i);
   if (!m) return [];
   return m[1]!.split(".").map((n) => Number(n));
 }
@@ -792,25 +798,35 @@ export function canonicalChangelogLabelOrder(labels: string[]): string[] {
   return [...labels].sort(compareChangelogVersionsDesc);
 }
 
+/**
+ * Sort single-product `<Update>` blocks newest first. Used for CMS staging,
+ * which only holds bare ComfyUI labels. Do not use it on the docs changelog:
+ * it mixes ComfyUI, Comfy Cloud and Comfy Desktop versions, which do not
+ * compare against each other.
+ */
 export function sortUpdateBlocksByVersion(blocks: ContentBlock[]): ContentBlock[] {
   return [...blocks].sort((a, b) => compareChangelogVersionsDesc(a.label, b.label));
 }
 
-export function orderSlotsForStrategy(strategy: ChunkStrategy, slots: BlockSlot[]): BlockSlot[] {
-  if (strategy !== "update_blocks") return slots;
-  return [...slots].sort((a, b) => compareChangelogVersionsDesc(a.label, b.label));
+/**
+ * Docs changelog order is the English file's order. The EN changelog mixes
+ * products, so the newest-first order is set by the author (by release date),
+ * not by comparing version numbers. Slots are built from the EN blocks, so
+ * they already carry that order.
+ */
+export function orderSlotsForStrategy(_strategy: ChunkStrategy, slots: BlockSlot[]): BlockSlot[] {
+  return slots;
 }
 
 export function canonicalBlockLabelOrder(
-  strategy: ChunkStrategy,
+  _strategy: ChunkStrategy,
   labels: string[]
 ): string[] {
-  return strategy === "update_blocks" ? canonicalChangelogLabelOrder(labels) : labels;
+  return labels;
 }
 
 export function changelogLabelHash(blocks: ContentBlock[]): string {
-  const labels = canonicalChangelogLabelOrder(blocks.map((b) => b.label));
-  return blockHash(labels.join("|"));
+  return blockHash(blocks.map((b) => b.label).join("|"));
 }
 
 const EN_MONTH_NAMES = [

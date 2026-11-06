@@ -14,14 +14,26 @@
       "label": "ComfyUI",
       "docs_en": "changelog/index.mdx",
       "default_attention": "low",
-      "min_version": "0.21.0"
+      "min_version": "0.21.0",
+      "platform": {
+        "product": "desktop",
+        "section_label": "Comfy Desktop Updates",
+        "since": "October 1, 2026",
+        "max_bullets": 3
+      }
     },
     {
       "id": "cloud",
       "label": "Cloud",
       "docs_en": "changelog/index.mdx",
       "default_attention": "low",
-      "min_version": "0.21.0"
+      "min_version": "0.21.0",
+      "platform": {
+        "product": "cloud",
+        "section_label": "Comfy Cloud Updates",
+        "since": "October 1, 2026",
+        "max_bullets": 3
+      }
     }
   ],
   "simplify": {

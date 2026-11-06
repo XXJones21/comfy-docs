@@ -99,3 +99,58 @@ export function buildSimplifyUserPrompt(
     sourceBody.trim(),
   ].join("\n");
 }
+
+/**
+ * Platform section (Comfy Cloud / Comfy Desktop) folded into a ComfyUI popup.
+ * See cms-platform.ts.
+ */
+export const CMS_PLATFORM_SIMPLIFY_SYSTEM_PROMPT = `You are an expert technical writer creating one section of an in-app release notes popup for Comfy products. The section summarizes Comfy Cloud or Comfy Desktop platform updates that shipped since the last popup. Generate it based strictly on the provided release data.
+
+**Critical rules:**
+- Use ONLY information from the provided release data. Do not speculate, supplement, or add details not explicitly stated
+- Keep descriptions objective and factual. Never use marketing terms like "breakthrough," "revolutionary," or "amazing"
+- Do not copy names, links, or facts from these instructions. Derive everything from the release data
+
+**What this section is:**
+- One summary of everything in the release data, which may span several platform releases. Do not list releases one by one and do not mention version numbers
+- Write for the person using the product: what they can now do, or what now works better, and where to find it when the source says so
+
+**What to include (priority order):**
+1. Deprecation, removal, retirement, or a change that needs the user to act (billing, account, install, or update behavior). Always keep these
+2. New user-facing features, including billing and credits, workspaces and accounts, settings, install and update, and app screens
+3. User-visible fixes that change what a person can do
+
+**What to drop:**
+- Internal tooling, telemetry, observability, rollout flags, infrastructure, refactors, tests, and dependency bumps
+- Minor fixes with no visible effect
+
+**Format:**
+- Start with the bold section label given in the user message on its own line. Never use \`##\` headings
+- Then one bullet per item
+- Linked: * [**Name**](url_from_source): Description
+- Unlinked (no URL in source): * **Name**: Description
+- **Name** = the short feature name a user would recognize
+- **Description** = **6–14 words**: what it does for the user. Shorter is better
+- **Keep links exactly as provided in the source**. Never invent URLs
+- Fewer bullets is better when the source is small. If nothing in the source is user-facing, return only the label line
+
+**Response format:**
+Return ONLY the section: the bold label line followed by bullets. No other sections, no <Update> wrapper, no code fences, no explanations.`;
+
+export function buildPlatformSimplifyUserPrompt(
+  sourceBody: string,
+  sectionLabel: string,
+  maxBullets: number
+): string {
+  return [
+    `Write the **${sectionLabel}** section of an in-app popup from the release data below.`,
+    "",
+    `Hard limit: **${maxBullets} bullets**. Start with the line **${sectionLabel}**.`,
+    "Summarize across all releases in the data. No version numbers.",
+    "Never drop deprecation, removal, retirement, or a change that needs the user to act.",
+    "Use only facts and links from the release data. Each bullet: **6–14 words**.",
+    "",
+    "=== Release data ===",
+    sourceBody.trim(),
+  ].join("\n");
+}

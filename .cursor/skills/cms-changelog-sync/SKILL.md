@@ -165,6 +165,43 @@ When curating `changelog/index.mdx` from ComfyUI git history, **do not add bulle
 
 Also omit standalone **frontend package semver bumps** unless tied to a user-visible fix worth its own bullet. CMS simplify must never promote WIKI-only items into popup copy even if they appear in the full docs block.
 
+## Comfy Cloud and Comfy Desktop entries
+
+`changelog/index.mdx` covers three products. Write every entry to the **Changelog entries** section of the `docs-style-guide` skill (label `<Product> v<version>`, date in `description`, one product in `tags`, newest first by date).
+
+### Where updates come from
+
+| Product | Source | How to read it |
+|---------|--------|----------------|
+| ComfyUI | [Comfy-Org/ComfyUI releases](https://github.com/Comfy-Org/ComfyUI/releases) | Public. Curate as described above |
+| Comfy Desktop | [Comfy-Org/Comfy-Desktop releases](https://github.com/Comfy-Org/Comfy-Desktop/releases) | Public. Stable releases only (skip `-rc`). The release PR body has **Features** and **Fixes**; when it still holds the auto-fill placeholder, read `git log vPREV..vNEW` and keep user-facing `feat:` / `fix:` commits |
+| Comfy Cloud | [Comfy-Org/cloud releases](https://github.com/Comfy-Org/cloud/releases) | **Private.** Needs the operator's own `gh` access, so CI and bots cannot do this step. See below |
+
+**Comfy Cloud selection.** Cloud ships many releases a day and its release notes are raw PR lists, mostly internal.
+
+1. If PRs carry a `changelog` label, use only labeled PRs: `gh pr list -R Comfy-Org/cloud --state merged --label changelog --search "merged:>=YYYY-MM-DD"`.
+2. Until the label is in use, list `feat(...)` PRs since the last Cloud entry, drop internal scopes (router docs, charts, migrations, telemetry, dynamic config, admin tooling), and show the **user a short list to choose from**. Do not decide alone what is user-facing.
+3. Confirm the feature is live in production (the overlay values or rollout flag), and find the first Cloud release tag that contains it (`git tag --contains <sha> --sort=creatordate | head -1`).
+4. Group the week's items into one entry labeled with the newest release in the group (see `docs-style-guide`, **Changelog entries**). A large launch can have its own entry.
+5. Check user-facing wording against the frontend strings (`ComfyUI_frontend/src/locales/en/main.json`) and the PR's ELI5 section. Flag items whose UI text you can't find.
+6. Never link `Comfy-Org/cloud` PRs in docs or CMS. Readers get a 404.
+
+### How they reach the popup (platform sections)
+
+The in-app popup compares each Strapi `version` with the running **ComfyUI** version, so Cloud and Desktop versions are never CMS versions. `cms:prepare:en` instead adds one section to the popup for the **next ComfyUI version**:
+
+| CMS project | Section | Carries |
+|-------------|---------|---------|
+| `comfyui` (local and Desktop users) | **Comfy Desktop Updates** | One summary of the Comfy Desktop entries since the last popup |
+| `cloud` | **Comfy Cloud Updates** | The Comfy Cloud entries since the last popup |
+
+- Configured per project in `cms-config.json` → `projects[].platform` (`product`, `section_label`, `since`, `max_bullets`, default 3).
+- New entries only fold into the **newest** ComfyUI version in the docs changelog, and only while it is unpublished. Backfilling older versions never picks them up.
+- `platform-folds.json` records which ComfyUI version each entry rode in. Re-running `--force` rebuilds the same section, and an entry is never announced twice. Commit it with staging.
+- The section is always last, after the ComfyUI sections. It counts separately from `max_bullets_total`.
+- Cloud staging is merged from comfyui staging (EN only), then the Desktop section is swapped for the Cloud section.
+- Adding only a Cloud or Desktop entry does not trigger a CMS sync. It waits for the next ComfyUI release.
+
 ## Node lifecycle (deprecation, removal, replacement, EOL)
 
 When curating `changelog/index.mdx` or simplifying CMS staging, **do not skip** user-facing node lifecycle changes. These are not "minor cleanup." Users need to know a node or model option is going away, already gone, or swapped for a successor.
@@ -353,7 +390,9 @@ Re-run with `--force`. Staging without `--force` **skips** existing `<Update>` b
 
 When user asks to update CMS release notes:
 
-- [ ] Confirm `changelog/index.mdx` has the new `<Update>` block
+- [ ] Confirm `changelog/index.mdx` has the new `<Update>` block, labeled and tagged per the `docs-style-guide` **Changelog entries** section
+- [ ] Add Comfy Desktop and Comfy Cloud entries shipped since the last ComfyUI release (see **Comfy Cloud and Comfy Desktop entries**). Show the user the Cloud candidate list before writing
+- [ ] After `pnpm cms:prepare:en`, check the **Comfy Desktop Updates** (comfyui) and **Comfy Cloud Updates** (cloud) sections and commit `platform-folds.json`
 - [ ] Resolve bullet URLs: search the **full** template `index.json` (`api_*` and OSS `video_*` / `image_*` / `3d_*`) and [blog.comfy.org/archive](https://blog.comfy.org/archive); Cloud = user UTM then `?template=` (video r2v → i2v → t2v); docs/local = blog then PR then repo
 - [ ] Align OSS popup names with existing `tutorials/` model names (added support for X). Not loader plumbing
 - [ ] Shorten Cloud EN bullets (added model support, skip node lists). Keep local/docs more detailed. Exception: Cloud removal/EOL bullets still list what was retired

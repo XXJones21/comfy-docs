@@ -20,7 +20,7 @@ Push **draft** release notes to Strapi CMS. Content is **simplified for end user
 - Sync and publish **comfyui only** by default (`--project comfyui`).
 - **Cloud hard gate:** every time someone asks to push/sync/publish to CMS, **ask again** whether Cloud should go out. Run `--project cloud` only after they manually confirm Cloud staging (links + copy) in that request. Pasted Cloud URLs or “push to CMS” alone are not Cloud approval. The gate covers **preview, sync, and publish**. See skill `cms-changelog-sync` → **Hard gate: Cloud push / publish**.
 - Strapi publish is **manual by default** — run `pnpm cms:publish` after review (not automatic on sync).
-- Do commit `.github/scripts/cms/staging/` and `published-versions.json` after Strapi publish.
+- Do commit `.github/scripts/cms/staging/`, `published-versions.json`, and `platform-folds.json` after Strapi publish.
 
 ## Architecture
 
@@ -64,6 +64,24 @@ Each version is **saved immediately** after simplify/translate (safe to resume).
 After prepare:en, secondary projects (cloud) merge only the prepared `<Update>` blocks from comfyui. If cloud EN already has that version, incoming tracking shortlinks are rewritten to match cloud EN (local vs cloud campaign URLs). `prepare:locales` translates each project from its own staging EN and does not copy comfyui locale files onto cloud.
 
 **Bullet URLs** (agents rewrite after prepare:en; see skill `cms-changelog-sync`): Cloud prefers a user-supplied UTM/`links.comfy.org` URL, else `https://cloud.comfy.org/?template=<name>` from [workflow_templates `index.json`](https://github.com/Comfy-Org/workflow_templates/blob/main/templates/index.json) (video: r2v → i2v → t2v). Docs and local CMS prefer a [blog.comfy.org](https://blog.comfy.org/) post, then the GitHub PR, then the repo commit/tag. **Cloud copy** is shorter than local (announce the model, do not enumerate every node).
+
+## Comfy Cloud and Comfy Desktop entries
+
+`changelog/index.mdx` mixes three products. Each `<Update>` names its product in the label and in `tags`:
+
+```mdx
+<Update label="ComfyUI v0.44.0" description="November 4, 2026" tags={["ComfyUI"]}>
+<Update label="Comfy Cloud v0.485.7" description="October 21, 2026" tags={["Comfy Cloud"]}>
+<Update label="Comfy Desktop v1.1.8" description="October 22, 2026" tags={["Comfy Desktop"]}>
+```
+
+- Only **ComfyUI** entries become CMS versions (`parseChangelogUpdates`). Staging keeps bare `v0.44.0` labels, because the popup compares `version` with the running ComfyUI version.
+- Cloud and Desktop entries fold into the popup of the next ComfyUI version as one section: **Comfy Desktop Updates** for `comfyui`, **Comfy Cloud Updates** for `cloud` (`cms-platform.ts`, `projects[].platform` in `cms-config.json`).
+- `platform-folds.json` records the ComfyUI version each entry rode in. Commit it with staging.
+- Relabeling or retagging an existing entry does not count as a new version in CI (`versionsFromGitDiff`).
+- Docs translation keeps the English file's block order, since versions from different products don't compare.
+
+Writing rules: `docs-style-guide` skill, **Changelog entries**. Sourcing (Desktop is public, Cloud is private): skill `cms-changelog-sync`.
 
 ## Projects & attention
 
@@ -122,6 +140,7 @@ Configured in `cms-config.json` → `simplify`:
 | `cms-config.json` | Locales, projects (comfyui/cloud), simplify settings |
 | `attention-overrides.json` | Per-project high-attention versions (optional) |
 | `published-versions.json` | Published versions — sync skips these |
+| `platform-folds.json` | Which ComfyUI version each Cloud / Desktop entry was folded into |
 
 ## API tokens
 
